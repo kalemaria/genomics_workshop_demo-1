@@ -1,4 +1,4 @@
-complimentary_nucleotides = {'A': 'T', 'T': 'A', 'C': 'G', 'G': 'C'}
+complementary_nucleotides = {'A': 'T', 'T': 'A', 'C': 'G', 'G': 'C'}
 
 
 class DNA:
@@ -40,8 +40,9 @@ class DNA:
                 return i
         raise TypeError("No start codon found")
 
-    def compliment(self):
-        return DNA(''.join(complimentary_nucleotides[nt] for nt in self.sequence.upper()))
+    @property
+    def complement(self):
+        return DNA(''.join(complementary_nucleotides[nt] for nt in self.sequence.upper()))
 
     def find_start_codons(self):
         """ Finds all start codons of a coding DNA sequence"""
@@ -56,7 +57,7 @@ class DNA:
 
     def transcribe(self):
         """Transcribes a DNA sequence into a RNA sequence"""
-        compliment = str(self.compliment)
-        reverse_compliment = (''.join(compliment[i] for i in range(len(compliment)-1, -1, -1)))
-        reverse_compliment_rna = reverse_compliment.replace('T', 'U')
-        return reverse_compliment_rna
+        complement = self.complement.sequence
+        reverse_complement = (''.join(complement[i] for i in range(len(complement)-1, -1, -1)))
+        reverse_complement_rna = reverse_complement.replace('T', 'U')
+        return reverse_complement_rna

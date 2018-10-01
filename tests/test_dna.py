@@ -7,9 +7,9 @@ def test_bad_sequence_raises_error():
         DNA('ATB')
 
 
-def test_complimentary_sequence_works():
-    assert DNA('GTC').compliment == DNA('CAG')
-    assert DNA('ATC').compliment == DNA('TAG')
+def test_complementary_sequence_works():
+    assert DNA('GTC').complement == DNA('CAG')
+    assert DNA('ATC').complement == DNA('TAG')
 
 
 def test_gc_content():
