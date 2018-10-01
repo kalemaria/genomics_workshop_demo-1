@@ -1,7 +1,8 @@
 complimentary_nucleotides = {'A': 'U', 'U': 'A', 'C': 'G', 'G': 'C'}
 
 type_motifs = {'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA': 'polyA tail mRNA',
-              'GAGAGUA': 'clover leaf loop tRNA', 'AAGUGC':'microRNA'}
+              'GAGAGUA': 'clover leaf loop tRNA', 'AAGUGC': 'microRNA'}
+
 
 class RNA:
     def __init__(self, sequence: str):
@@ -35,32 +36,26 @@ class RNA:
                 pass
                 # return print('not this type')
 
-
     def check_polyA(self):
         """
         Checks whether the RNA sequence contains a poly A tail of 50 adenines.
         :return: True if yes, False otherwise
         """
         return True if self.sequence.endswith('A'*50) else False
-        return all(nucleotide.upper() in 'GCAU' for nucleotide in self.sequence)
 
     @property
     def complimentary_sequence(self):
         return RNA(''.join(complimentary_nucleotides[nt.upper()] for nt in self.sequence))
 
-
-
     @property
     def _check_if_mutated(self):
         """
-        This function checks whether the particular sequence inserted corresponds to GGGGGGGGGGUGGGGGGGGG,
+        This function checks whether the    particular sequence inserted corresponds to GGGGGGGGGGUGGGGGGGGG,
         otherwise it means the sequence is mutated and the function reports this.
         :return:
         """
         is_mutated = 'GGGGGGGGGGUGGGGGGGGG' in self.sequence
-        #return True if is_mutated else False
-        print('The fish is mutated') if is_mutated else print('The fish is not mutated')
-
+        return True if is_mutated else False
 
     def get_aa_sequence(self):
         """
@@ -116,8 +111,6 @@ class RNA:
     @property
     def reverse_sequence(self):
         return RNA(''.join(reversed(self.sequence)))
-
-
 
     @property
     def rna_start_codon(self):
