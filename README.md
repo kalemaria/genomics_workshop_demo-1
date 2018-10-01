@@ -14,7 +14,7 @@ pip install git+https://github.com/nickdelgrosso/genomics_workshop_demo
 ```python
 from genomics_demo import DNA
 dna_strand = DNA('AGTCAGC')  # Make DNA strand
-dna_strand.complimentary_sequence  # outputs "TCAGTCG"
+dna_strand.complement  # outputs DNA('TCAGTCG')
 ```
 
 
