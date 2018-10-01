@@ -20,7 +20,6 @@ class DNA:
         return all(nucleotide in 'GCAT' for nucleotide in self.sequence.upper())
 
     @property
-<<<<<<< HEAD
     def compliment(self):
         return DNA(''.join(complimentary_nucleotides[nt] for nt in self.sequence.upper()))
 
