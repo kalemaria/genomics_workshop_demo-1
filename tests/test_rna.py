@@ -9,7 +9,9 @@ def test_complimentary_sequence_works():
     assert RNA('GUC').complimentary_sequence == RNA('CAG')
     assert RNA('AUC').complimentary_sequence == RNA('UAG')
 
-
 def test_check_polyA():
     assert RNA('A' * 50).check_polyA()
     assert RNA('A' * 49).check_polyA() is False
+
+def test_get_aa_sequence():
+    assert RNA('UUUUUCUUAU').get_aa_sequence() == 'Phe-Phe-Leu'

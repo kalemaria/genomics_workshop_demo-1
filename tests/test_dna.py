@@ -20,3 +20,16 @@ def test_find_start_codons():
 def test_transcribe():
     assert DNA('GTC').transcribe() == 'GAC'
     assert DNA('ATC').transcribe() == 'GAU'
+
+
+def test_triplets():
+    assert DNA('AAA').split_DNA_triplets == ['AAA']
+    assert DNA('AAATTTGGG').split_DNA_triplets == ['AAA','TTT','GGG']
+    assert DNA('AAAT').split_DNA_triplets == ['AAA','T']
+
+
+def test_find_start():
+    assert DNA('ATGGG').find_first_start_site == 0
+    assert DNA('CCCCATG').find_first_start_site == 4
+    with pytest.raises(TypeError):
+        DNA('GGG').find_first_start_site

@@ -20,6 +20,7 @@ class DNA:
         return all(nucleotide in 'GCAT' for nucleotide in self.sequence.upper())
 
     @property
+<<<<<<< HEAD
     def compliment(self):
         return DNA(''.join(complimentary_nucleotides[nt] for nt in self.sequence.upper()))
 
@@ -40,3 +41,17 @@ class DNA:
         reverse_compliment = (''.join(compliment[i] for i in range(len(compliment)-1, -1, -1)))
         reverse_compliment_rna = reverse_compliment.replace('T', 'U')
         return reverse_compliment_rna
+
+    @property
+    def split_DNA_triplets(self):
+        return [self.sequence[i:i + 3] for i in range(0, len(self.sequence), 3)]
+
+    @property
+    def find_first_start_site(self):
+        '''
+        Seeks position of the first start codon, if present.
+        '''
+        for i in range(0,len(self.sequence)):
+            if self.sequence[i:i + 3] == 'ATG':
+                return i
+        raise TypeError("No start codon found")
