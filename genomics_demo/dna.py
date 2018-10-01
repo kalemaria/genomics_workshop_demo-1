@@ -58,6 +58,5 @@ class DNA:
     def transcribe(self):
         """Transcribes a DNA sequence into a RNA sequence"""
         complement = self.complement.sequence
-        reverse_complement = (''.join(complement[i] for i in range(len(complement)-1, -1, -1)))
-        reverse_complement_rna = reverse_complement.replace('T', 'U')
+        reverse_complement_rna = complement[::-1].replace('T', 'U')
         return reverse_complement_rna
